@@ -1,0 +1,78 @@
+buildscript {
+    ext.kotlin_version = '1.1.3-2'
+    repositories {
+        mavenCentral()
+        maven { url = 'http://files.minecraftforge.net/maven/' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+    }
+}
+plugins {
+    id 'org.spongepowered.plugin' version '0.8.1'
+    id 'net.minecrell.vanillagradle.server' version '2.2-6'
+    id 'signing'
+    id 'maven'
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+group = 'mnm.plugins'
+version = '1.0-SNAPSHOT'
+
+archivesBaseName = "noclip-plugin"
+description = 'Enables NoClip via a client mod.'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+sponge.plugin.id = 'noclip'
+
+minecraft {
+    version = '1.12'
+    mappings = 'snapshot_20170722'
+
+    runDir = 'run'
+
+    makeObfSourceJar = false
+}
+
+repositories {
+    jcenter()
+    maven { url 'https://oss.sonatype.org/content/groups/public/' }
+    maven { url "https://repo.spongepowered.org/maven" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+    maven { url 'https://jitpack.io' }
+    mavenCentral()
+}
+configurations {
+    compile.extendsFrom kapt
+}
+dependencies {
+    kapt 'org.spongepowered:spongeapi:7.0.0-SNAPSHOT'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+//    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    compile 'com.github.CrushedPixel:PacketGate:0.1.1'
+}
+compileKotlin {
+
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+
+    }
+
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
