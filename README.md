@@ -1,6 +1,6 @@
 # NoClip
 Enables NoClip on a sponge server via a client mod.
-Client mod coming soon.
+Get the mod [here](https://github.com/killjoy1221/NoClip-client)
 
 ## Installing
 Copy the jar and depedencies into the `/mods/` folder. 
