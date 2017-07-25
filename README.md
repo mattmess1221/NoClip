@@ -1,5 +1,6 @@
 # NoClip
 Enables NoClip on a sponge server via a client mod.
+
 Get the mod [here](https://github.com/killjoy1221/NoClip-client)
 
 ## Installing
@@ -7,6 +8,7 @@ Copy the jar and depedencies into the `/mods/` folder.
 
 ## Dependencies
 These plugins are required for proper functionality.
+
 | Plugin                                                    | Reason       |
 |-----------------------------------------------------------|--------------|
 |[Spotlin](https://ore.spongepowered.org/pxlpowered/Spotlin)|Kotlin library|
