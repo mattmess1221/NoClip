@@ -33,7 +33,6 @@ import java.util.*
 
 @Plugin(id = "noclip",
         name = "NoClip",
-        version = "1.0",
         authors = arrayOf("killjoy1221"),
         description = "Allows NoClip via a client mod",
         dependencies = arrayOf(

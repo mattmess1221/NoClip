@@ -21,10 +21,9 @@ apply plugin: 'kotlin'
 apply plugin: 'kotlin-kapt'
 
 group = 'mnm.plugins'
-version = '1.0-SNAPSHOT'
+version = '1.0'
 
 archivesBaseName = "noclip-plugin"
-description = 'Enables NoClip via a client mod.'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -63,16 +62,25 @@ dependencies {
     compile 'com.github.CrushedPixel:PacketGate:0.1.1'
 }
 compileKotlin {
-
-
     kotlinOptions {
         jvmTarget = "1.8"
-
     }
-
 }
+compileKotlin.dependsOn generateMetadata
+kapt {
+    processors += 'org.spongepowered.plugin.processor.PluginProcessor'
+    arguments {
+        arg 'extraMetadataFiles', generateMetadata.target
+        arg 'metadataOutputFile', generateMetadata.target
+    }
+}
+afterEvaluate { tasks.kaptKotlin.outputs.upToDateWhen { false } }
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
+
+signing {
+    sign jar
 }
